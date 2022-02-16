@@ -1,17 +1,20 @@
-import {Container, Content} from './style';
-import {Dashboard} from '../Dashboard'
-import logo from '../../assets/logo.svg';
+import { Container, Content } from './style'
+import logo from '../../assets/logo.svg'
+import { FC } from 'react'
 
-export const Header = () => {
-    return (
-        <>
-            <Container>
-                <Content>
-                    <img src={logo} alt="Logo"/>
-                    <button>Nova Transação</button>
-                </Content>
-            </Container>
-            <Dashboard/>
-        </>
-    );
+interface HeaderProps {
+  onOpenNewTransactionModal: () => void
+}
+
+export const Header: FC<HeaderProps> = ({ onOpenNewTransactionModal }) => {
+  return (
+    <>
+      <Container>
+        <Content>
+          <img src={logo} alt="Logo" title="Logo" />
+          <button onClick={onOpenNewTransactionModal}>Nova Transação</button>
+        </Content>
+      </Container>
+    </>
+  )
 }
