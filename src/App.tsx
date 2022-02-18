@@ -1,17 +1,14 @@
-import React, { useState } from 'react'
-import Modal from 'react-modal'
 import { GlobalStyle } from './styles/global'
 import { Header } from './components/Header'
 import { Dashboard } from './components/Dashboard'
+import { useState } from 'react'
+import { TransactionModal } from './components/Modal/TransactionModal'
 
 export function App() {
-  // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-  Modal.setAppElement('#root')
-
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
     useState(false)
 
-  const handleOpenNewTransactionModal = () => {
+  const handleOpenTransactionModal = () => {
     setIsNewTransactionModalOpen(true)
   }
 
@@ -22,14 +19,12 @@ export function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
+      <Header onOpenTransactionModal={handleOpenTransactionModal} />
       <Dashboard />
-      <Modal
+      <TransactionModal
         isOpen={isNewTransactionModalOpen}
         onRequestClose={handleCloseNewTransactionModal}
-      >
-        <h2>Título</h2>
-      </Modal>
+      />
     </div>
   )
 }

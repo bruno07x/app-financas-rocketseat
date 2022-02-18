@@ -3,18 +3,16 @@ import logo from '../../assets/logo.svg'
 import { FC } from 'react'
 
 interface HeaderProps {
-  onOpenNewTransactionModal: () => void
+  onOpenTransactionModal: () => void
 }
 
-export const Header: FC<HeaderProps> = ({ onOpenNewTransactionModal }) => {
+export const Header: FC<HeaderProps> = ({ onOpenTransactionModal }) => {
   return (
-    <>
-      <Container>
-        <Content>
-          <img src={logo} alt="Logo" title="Logo" />
-          <button onClick={onOpenNewTransactionModal}>Nova Transação</button>
-        </Content>
-      </Container>
-    </>
+    <Container>
+      <Content>
+        <img src={logo} alt="Logo" title="Logo" />
+        <button onClick={onOpenTransactionModal}>Nova Transação</button>
+      </Content>
+    </Container>
   )
 }
