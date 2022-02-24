@@ -19,6 +19,14 @@ createServer({
             type: 'deposit',
             category: 'Developer',
             createdAt: new Date()
+          },
+          {
+            id: 2,
+            title: 'Jogo pokémon',
+            value: 450,
+            type: 'withdraw',
+            category: 'Jogo',
+            createdAt: new Date()
           }
         ]
       }

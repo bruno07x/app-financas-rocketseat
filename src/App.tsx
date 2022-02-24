@@ -3,6 +3,7 @@ import { Header } from './components/Header'
 import { Dashboard } from './components/Dashboard'
 import { useState } from 'react'
 import { TransactionModal } from './components/Modal/TransactionModal'
+import { TransactionProvider } from './hooks/useTransactions'
 
 export function App() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
@@ -17,14 +18,17 @@ export function App() {
   }
 
   return (
-    <div className="App">
-      <GlobalStyle />
-      <Header onOpenTransactionModal={handleOpenTransactionModal} />
-      <Dashboard />
-      <TransactionModal
-        isOpen={isNewTransactionModalOpen}
-        onRequestClose={handleCloseNewTransactionModal}
-      />
+    // * Provider context to children components
+    <div id="app">
+      <TransactionProvider>
+        <GlobalStyle />
+        <Header onOpenTransactionModal={handleOpenTransactionModal} />
+        <Dashboard />
+        <TransactionModal
+          isOpen={isNewTransactionModalOpen}
+          onRequestClose={handleCloseNewTransactionModal}
+        />
+      </TransactionProvider>
     </div>
   )
 }
